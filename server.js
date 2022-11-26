@@ -36,7 +36,7 @@ const port = process.env.PORT || 3001;
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
 	
-	fetch (`https://api.github.com/users/${user}`)
+	fetch(`https://api.github.com/users/${user}`)
 		.then((result) => {
 			res.send(result.data);
 			console.log(result.data);
