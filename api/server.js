@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-const whitelist = [ 'http://localhost:3000', 'http://localhost:3001', 'https://shrouded-journey-38552.heroku...' ];
+const whitelist = [ 'http://localhost:3000', 'http://localhost:3001', 'https://git.heroku.com/github-search-app-full-1.git' ];
 const corsOptions = {
 	origin: function(origin, callback) {
 		console.log('** Origin of request ' + origin);
@@ -29,10 +29,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
 const port = process.env.PORT_EXPRESS || 3001;
 //const port = process.env.PORT || 3001
-app.use(cors({ origin: '*', credentials: true }));
+//app.use(cors({ origin: '*', credentials: true }));
 
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
