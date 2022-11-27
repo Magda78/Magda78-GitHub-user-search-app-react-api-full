@@ -34,7 +34,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 3001;
-app.get('/:user', (req, res) => {
+app.get('https://github-search-app-full-1.herokuapp.com/:user', (req, res) => {
 	const { user } = req.params;
 
 	axios
