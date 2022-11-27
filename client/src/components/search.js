@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { axiosBaseUrl } from '../../config';
+import { axiosBaseUrl } from '../config';
 
 function Search({ click, setData }) {
 	const [ user, setUser ] = useState('');
