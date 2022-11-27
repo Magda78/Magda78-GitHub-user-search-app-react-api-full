@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosBaseUrl } from '../config';
+import axios from 'axios';
 
 function Search({ click, setData }) {
 	const [ user, setUser ] = useState('');
@@ -13,7 +14,7 @@ function Search({ click, setData }) {
 		if (user.length === 0) {
 			alert('You need to type username');
 		} else {
-			axiosBaseUrl
+			axios
 				.get(`https://github-search-app-full-1.herokuapp.com/${user}`)
 				.then((response) => {
 					if (response.data.name !== 'AxiosError') {
