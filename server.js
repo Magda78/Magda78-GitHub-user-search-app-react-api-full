@@ -40,7 +40,7 @@ app.get('/:user', (req, res) => {
 	axios
 		.get(`https://api.github.com/users/${user}`)
 		.then((result) => {
-			res.header("Access-Control-Allow-Origin", "http://localhost:3000")
+			res.header("Access-Control-Allow-Origin", "https://github-search-app-full-1.herokuapp.com")
 			res.send(result.data);
 			console.log(result.data);
 		})
