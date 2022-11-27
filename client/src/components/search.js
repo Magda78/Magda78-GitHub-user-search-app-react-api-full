@@ -14,7 +14,7 @@ function Search({ click, setData }) {
 			alert('You need to type username');
 		} else {
 			axiosBaseUrl
-				.get(`/${user}`)
+				.get(`https://github-search-app-full-1.herokuapp.com/${user}`)
 				.then((response) => {
 					if (response.data.name !== 'AxiosError') {
 						setData(response);
