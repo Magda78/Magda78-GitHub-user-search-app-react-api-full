@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { axiosBaseUrl } from '../../config';
 
 function Search({ click, setData }) {
 	const [ user, setUser ] = useState('');
@@ -13,7 +13,7 @@ function Search({ click, setData }) {
 		if (user.length === 0) {
 			alert('You need to type username');
 		} else {
-			axios
+			axiosBaseUrl
 				.get(`/${user}`)
 				.then((response) => {
 					if (response.data.name !== 'AxiosError') {
