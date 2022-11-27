@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 const whitelist = [
 	'http://localhost:3000',
 	'http://localhost:3001',
-	'https://github-search-app-full-1.herokuapp.com/'
+	'https://github-search-app-full-1.herokuapp.com'
 ];
 const corsOptions = {
 	origin: function(origin, callback) {
@@ -40,6 +40,7 @@ app.get('/:user', (req, res) => {
 	axios
 		.get(`https://api.github.com/users/${user}`)
 		.then((result) => {
+			res.header("Access-Control-Allow-Origin", "http://localhost:3000")
 			res.send(result.data);
 			console.log(result.data);
 		})
