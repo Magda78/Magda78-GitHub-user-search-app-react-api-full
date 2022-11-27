@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 const whitelist = [
 	'http://localhost:3000',
 	'http://localhost:3001',
-	'https://github-search-app-full-1.herokuapp.com'
+	'https://github-search-app-full-1.herokuapp.com/'
 ];
 const corsOptions = {
 	origin: function(origin, callback) {
@@ -34,7 +34,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 3001;
-app.get('https://github-search-app-full-1.herokuapp.com/:user', (req, res) => {
+app.get('/:user', (req, res) => {
 	const { user } = req.params;
 
 	axios
