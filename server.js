@@ -14,7 +14,11 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-const whitelist = [ 'http://localhost:3000', 'http://localhost:3001', 'https://git.heroku.com/github-search-app-full-1.git' ];
+const whitelist = [
+	'http://localhost:3000',
+	'http://localhost:3001',
+	'https://https://github-search-app-full-1.herokuapp.com'
+];
 const corsOptions = {
 	origin: function(origin, callback) {
 		console.log('** Origin of request ' + origin);
@@ -35,8 +39,9 @@ const port = process.env.PORT || 3001;
 
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
-	
-	fetch(`https://api.github.com/users/${user}`)
+
+	axios
+		.get(`https://api.github.com/users/${user}`)
 		.then((result) => {
 			res.send(result.data);
 			console.log(result.data);
