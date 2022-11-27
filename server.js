@@ -34,9 +34,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 3001;
-//const port = process.env.PORT || 3001
-//app.use(cors({ origin: '*', credentials: true }));
-
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
 
