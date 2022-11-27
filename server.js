@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 const whitelist = [
 	'http://localhost:3000',
 	'http://localhost:3001',
-	'https://https://github-search-app-full-1.herokuapp.com'
+	'https://github-search-app-full-1.herokuapp.com'
 ];
 const corsOptions = {
 	origin: function(origin, callback) {
