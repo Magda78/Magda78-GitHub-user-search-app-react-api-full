@@ -5,6 +5,8 @@ const axios = require('axios');
 const cors = require('cors');
 const app = express();
 
+const port = process.env.PORT || 3001;
+
 if (process.env.NODE_ENV === 'production') {
 	// Serve any static files
 	app.use(express.static(path.join(__dirname, 'client/build')));
@@ -29,18 +31,18 @@ const corsOptions = {
 			console.log('Origin rejected');
 			callback(new Error('Not allowed by CORS'));
 		}
-	}
+		
+	},
+	credentials: true,
 };
 app.use(cors(corsOptions));
 
-const port = process.env.PORT || 3001;
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
 
 	axios
 		.get(`https://api.github.com/users/${user}`)
 		.then((result) => {
-			res.header("Access-Control-Allow-Origin", `https://github-search-app-full-1.herokuapp.com/${user}`)
 			res.send(result.data);
 			console.log(result.data);
 		})
