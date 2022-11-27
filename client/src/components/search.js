@@ -18,7 +18,7 @@ function Search({ click, setData }) {
 				.get(`/${user}`)
 				.then((response) => {
 					if (response.data.name !== 'AxiosError') {
-						console.log('response', response);
+						console.log('response', response.data);
 						setData(response);
 						setShow(false);
 					} else {
