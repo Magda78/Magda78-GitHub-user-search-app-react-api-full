@@ -16,34 +16,20 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://github-search-app-full-1.herokuapp.com")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-    if (req.method === "OPTIONS") {
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )
-      return res.status(200).json({})
-    }
-    next()
-  })
+app.use(cors({ origin: 'https://github-search-app-full-1.herokuapp.com', credentials: true }));
 
-const whitelist = [
-	'http://localhost:3000',
-	'http://localhost:3001',
-	'https://github-search-app-full-1.herokuapp.com'
-];
-const corsOptions = {
-	origin:'http://localhost:3000', 
-	methods:["GET", "POST"],
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-};
-app.use(cors(corsOptions));
+//const whitelist = [
+//	'http://localhost:3000',
+//	'http://localhost:3001',
+//	'https://github-search-app-full-1.herokuapp.com'
+//];
+//const corsOptions = {
+//	origin:'http://localhost:3000',
+//	methods:["GET", "POST"],
+//  credentials:true,            //access-control-allow-credentials:true
+// optionSuccessStatus:200
+//};
+//app.use(cors(corsOptions));
 
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
