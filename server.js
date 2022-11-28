@@ -16,6 +16,22 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://github-search-app-full-1.herokuapp.com")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )
+      return res.status(200).json({})
+    }
+    next()
+  })
+
 const whitelist = [
 	'http://localhost:3000',
 	'http://localhost:3001',
