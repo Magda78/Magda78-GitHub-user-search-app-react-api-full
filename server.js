@@ -16,6 +16,21 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
+const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://github-search-app-full-1.herokuapp.com','https://api.github.com/users']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
+
 //app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 //const whitelist = [
