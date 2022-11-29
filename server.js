@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+//app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 //const whitelist = [
 //	'http://localhost:3000',
@@ -31,12 +31,13 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 //};
 //app.use(cors(corsOptions));
 
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
+//const corsOptions ={
+  //  origin:'http://localhost:3000', 
+    //credentials:true,            //access-control-allow-credentials:true
+    ///optionSuccessStatus:200
+//}
+//app.use(cors(corsOptions));
+app.use(cors())
 
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
