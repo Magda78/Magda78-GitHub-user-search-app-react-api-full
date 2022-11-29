@@ -22,33 +22,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-
-
-
-
-//app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
-
-//const whitelist = [
-//	'http://localhost:3000',
-//	'http://localhost:3001',
-//	'https://github-search-app-full-1.herokuapp.com'
-//];
-//const corsOptions = {
-//	origin:'http://localhost:3000',
-//	methods:["GET", "POST"],
-//  credentials:true,            //access-control-allow-credentials:true
-// optionSuccessStatus:200
-//};
-//app.use(cors(corsOptions));
-
-//const corsOptions ={
-  //  origin:'http://localhost:3000', 
-    //credentials:true,            //access-control-allow-credentials:true
-    ///optionSuccessStatus:200
-//}
-//app.use(cors(corsOptions));
-app.use(cors())
-
 app.get('/:user', (req, res) => {
 	const { user } = req.params;
 
