@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-app.use(cors({ origin: 'https://api.github.com/users', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 //const whitelist = [
 //	'http://localhost:3000',
