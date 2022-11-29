@@ -7,15 +7,6 @@ const app = express();
 
 const port = process.env.PORT || 3001;
 
-if (process.env.NODE_ENV === 'production') {
-	// Serve any static files
-	app.use(express.static(path.join(__dirname, 'client/build')));
-	// Handle React routing, return all requests to React app
-	app.get('*', function(req, res) {
-		res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-	});
-}
-
 const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://github-search-app-full-1.herokuapp.com','https://api.github.com/users']
 const corsOptions = {
   origin: function (origin, callback) {
@@ -30,6 +21,10 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions))
+
+
+
+
 
 //app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
@@ -65,6 +60,15 @@ app.get('/:user', (req, res) => {
 		})
 		.catch((err) => res.send(err));
 });
+
+if (process.env.NODE_ENV === 'production') {
+	// Serve any static files
+	app.use(express.static(path.join(__dirname, 'client/build')));
+	// Handle React routing, return all requests to React app
+	app.get('*', function(req, res) {
+		res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+	});
+}
 
 app.listen(port, () => {
 	console.log('server runing');
