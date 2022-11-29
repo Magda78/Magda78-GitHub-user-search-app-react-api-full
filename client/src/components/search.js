@@ -14,7 +14,7 @@ function Search({ click, setData }) {
 		if (user.length === 0) {
 			alert('You need to type username');
 		} else {
-			axiosBaseUrl
+			axios
 				.get(`/${user}`)
 				.then((response) => {
 					if (response.data.name !== 'AxiosError') {
